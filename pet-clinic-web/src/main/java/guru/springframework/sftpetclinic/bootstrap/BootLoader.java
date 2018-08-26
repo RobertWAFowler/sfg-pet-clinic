@@ -4,8 +4,7 @@ import guru.springframework.sftpetclinic.model.Owner;
 import guru.springframework.sftpetclinic.model.Vet;
 import guru.springframework.sftpetclinic.services.OwnerService;
 import guru.springframework.sftpetclinic.services.VetService;
-import guru.springframework.sftpetclinic.services.map.OwnerServiceMap;
-import guru.springframework.sftpetclinic.services.map.VetServiceMap;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -15,9 +14,10 @@ public class BootLoader implements CommandLineRunner {
     public final OwnerService ownerService;
     public final VetService vetService;
 
-    public BootLoader() {
-        ownerService = new OwnerServiceMap();
-        vetService = new VetServiceMap();
+    @Autowired
+    public BootLoader(OwnerService ownerService, VetService vetService) {
+        this.ownerService = ownerService;
+        this.vetService = vetService;
     }
 
     @Override
