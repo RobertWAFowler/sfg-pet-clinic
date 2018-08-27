@@ -5,6 +5,23 @@
     <title>Vets List Index</title>
 </head>
 <body>
+<!--/*@thymesVar id="vet" type="guru.springframework.sftpetclinic.model.Vet"*/-->
+
 <h1 th:text="'th:Vets List Index'">Vets List Index</h1>
+
+<table>
+    <thead>
+    <th>Id</th>
+    <th>FirstName</th>
+    <th>LastName</th>
+    </thead>
+    <tbody>
+    <tr th:each="vet: ${vets}">
+        <td th:text="${vet.id}">No</td>
+        <td th:text="${vet.firstName}">Data</td>
+        <td th:text="${vet.lastName}">Here</td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>
