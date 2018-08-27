@@ -15,8 +15,8 @@ public Pet findById(Long id) {
         }
 
 @Override
-public void save(Pet object) {
-        super.save(object.getId(),object);
+public Pet save(Pet object) {
+        return super.save(object);
         }
 
 @Override
