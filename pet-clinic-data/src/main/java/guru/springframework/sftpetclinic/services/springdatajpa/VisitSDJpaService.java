@@ -14,7 +14,6 @@ import java.util.Set;
  */
 @Service
 @Profile("springdatajpa")
-
 public class VisitSDJpaService implements VisitService {
 
     private final VisitRepository visitRepository;
