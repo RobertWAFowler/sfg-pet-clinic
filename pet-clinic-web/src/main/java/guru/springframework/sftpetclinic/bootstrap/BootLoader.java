@@ -25,8 +25,11 @@ public class BootLoader implements CommandLineRunner {
     private final SpecialityService specialityService;
     private final VisitService visitService;
 
-    public BootLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService,
-                      SpecialityService specialityService, VisitService visitService) {
+    public BootLoader(OwnerService ownerService,
+                      VetService vetService,
+                      PetTypeService petTypeService,
+                      SpecialityService specialityService,
+                      VisitService visitService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
