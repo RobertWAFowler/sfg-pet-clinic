@@ -29,13 +29,6 @@ public class OwnersController {
         dataBinder.setDisallowedFields("id");
     }
 
-//    @RequestMapping({"", "/", "/index", "/  index.html"})
-//    public String listOwners(Model model) {
-//
-//        model.addAttribute("owners", ownerService.findAll());
-//        return "owners/index";
-//    }
-
     @RequestMapping("/find")
     public String findOwners(Model model) {
         model.addAttribute("owner", Owner.builder().build());
@@ -51,7 +44,7 @@ public class OwnersController {
         }
 
         // find owners by last name
-        List<Owner> results = ownerService.findAllByLastNameLike(owner.getLastName());
+        List<Owner> results = ownerService.findAllByLastNameLike("%"+owner.getLastName()+"%");
 
         if (results.isEmpty()) {
             // no owners found
@@ -64,7 +57,7 @@ public class OwnersController {
         } else {
             // multiple owners found
             model.addAttribute("selections", results);
-            return "redirect:/owners/ownersList";
+            return "/owners/ownersList";
         }
     }
 
