@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.beans.PropertyEditorSupport;
+import java.time.LocalDate;
 
 @Controller
 public class VisitController {
@@ -49,6 +51,18 @@ public class VisitController {
         Visit visit = new Visit();
         pet.getVisits().add(visit);
         return visit;
+    }
+
+    @InitBinder
+    public void dataBinder(WebDataBinder dataBinder) {
+        dataBinder.setDisallowedFields("id");
+
+        dataBinder.registerCustomEditor(LocalDate.class, new PropertyEditorSupport() {
+            @Override
+            public void setAsText(String text) throws IllegalArgumentException {
+                setValue(LocalDate.parse(text));
+            }
+        });
     }
 
     // Spring MVC calls method loadPetWithVisit(...) before initNewVisitForm is called
